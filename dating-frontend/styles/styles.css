@@ -21,7 +21,7 @@ body{
 .login-form-container{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     border-radius: 15px;
     padding: 10px 10px;
