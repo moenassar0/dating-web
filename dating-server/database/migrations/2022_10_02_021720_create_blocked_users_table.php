@@ -14,8 +14,9 @@ class CreateBlockedUsersTable extends Migration
     public function up()
     {
         Schema::create('blocked_users', function (Blueprint $table) {
-            $table->id();
+            $table->integer('user_id');
             $table->integer('blocked_user_id');
+            $table->primary(array('user_id', 'blocked_user_id'));	
             $table->timestamps();
         });
     }
