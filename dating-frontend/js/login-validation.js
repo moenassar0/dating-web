@@ -35,11 +35,20 @@ login_btn.addEventListener("click", async () => {
 
 signup_btn.addEventListener("click", () => {
     console.log(f_name.value, l_name.value, gender.options[gender.selectedIndex].value,
-         interested_gender.options[interested_gender.selectedIndex].value, signup_email.value, signup_password.value);
+        interested_gender.options[interested_gender.selectedIndex].value, signup_email.value, signup_password.value);
 
-         error_message = "";
-        if(!validateName(f_name.value)){
+        error_message = "";
+        if(!validateName(f_name.value, 2)){
              error_message += "First name is too short! (Minimum 2 characaters) <br>"
+        }
+        if(!validateName(l_name.value, 2)){
+            error_message += "Last name is too short! (Minimum 2 characaters) <br>"
+        }
+        if(!validateName(signup_password.value, 8)){
+            error_message += "Password is too short! (Minimum 8 characaters) <br>"
+        }
+        if(!validateEmail(signup_email.value)){
+            error_message += "Email is incorrect! (You need characters before and after the @) <br>"
         }
         if(error_message != ''){
             success_div.classList.add("hidden");
@@ -53,7 +62,7 @@ signup_btn.addEventListener("click", () => {
             success_div.classList.remove("hidden");
             //sendRequest(name_field.value, email_field.value, phone_field.value, message_field.value);
         }
-         console.log(error_message);
+        console.log(error_message);
 })
 
 async function logUserIn(data){
@@ -77,8 +86,8 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-function validateName(name) {
-    if(name.length < 2)
+function validateName(name, minLength) {
+    if(name.length < minLength)
         return false;
     return true;
 }
