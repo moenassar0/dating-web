@@ -1,5 +1,8 @@
 import * as Functions from "./Functions.js";
 
+const success_div = document.getElementById("success-div");
+const error_div = document.getElementById("error-div");
+
 const login_form_container = document.getElementById("login-form-container");
 const login_email = document.getElementById("login-email");
 const login_password = document.getElementById("login-password");
@@ -32,6 +35,13 @@ login_btn.addEventListener("click", async () => {
 signup_btn.addEventListener("click", () => {
     console.log(f_name.value, l_name.value, gender.options[gender.selectedIndex].value,
          interested_gender.options[interested_gender.selectedIndex].value, signup_email.value, signup_password.value);
+
+         error_message = "";
+         if(!validateName(f_name.value)){
+             error_message += "Name is too short! (Minimum 2 characaters) <br>"
+         }
+
+         console.log(error_message);
 })
 
 async function logUserIn(data){
