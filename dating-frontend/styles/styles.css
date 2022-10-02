@@ -92,6 +92,11 @@ body{
 /* Profile Card */
 .profile-card-container{
     display: flex;
+    padding: 10px 10px;
+}
+
+.profile-card{
+    display: flex;
     flex-direction: column;
     width: 25%;
     min-height: 400px;
