@@ -60,7 +60,15 @@ signup_btn.addEventListener("click", () => {
             error_message = '';
             success_div.innerHTML = "Successfully sent the message!"
             success_div.classList.remove("hidden");
-            //sendRequest(name_field.value, email_field.value, phone_field.value, message_field.value);
+            const data = {
+                f_name: f_name.value,
+                l_name: l_name.value, 
+                gender: gender.options[gender.selectedIndex].value,
+                interest_gender: interested_gender.options[interested_gender.selectedIndex].value,
+                email: signup_email.value,
+                password: signup_password.value
+            }
+            signUserUp(data);
         }
         console.log(error_message);
 })
@@ -70,6 +78,10 @@ async function logUserIn(data){
         localStorage.setItem("token", data.access_token);
         window.location.href="home.html";
     }
+}
+
+async function signUserUp(data){
+
 }
 
 
