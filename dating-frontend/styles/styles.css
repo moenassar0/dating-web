@@ -96,6 +96,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     padding: 10px 10px;
+    justify-content: center;
 }
 
 .profile-card{
@@ -111,7 +112,6 @@ body{
 }
 
 /* Utilities */
-
 .center-self{
     display:flex;
     align-self: center;
@@ -121,6 +121,10 @@ body{
     display:flex;
     flex: 1;
     align-self: flex-end;
+}
+
+.hidden{
+    display:none;
 }
 
 /* Responsitivity */

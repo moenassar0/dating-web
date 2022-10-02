@@ -9,8 +9,9 @@ export const ProfileCard = (profileCard) => {
                 <div class="profile-card-bio">
                     I have no idea what to type here
                 </div>
-                <div class="profile-card-actions">
-                    <button>Favorite</button>
+                <div id="${profileCard.id}" class="profile-card-actions">
+                    <button class="favorite-btn">Favorite</button>
+                    <button class="block-btn">Block</button>
                 </div>
             </div>
         `

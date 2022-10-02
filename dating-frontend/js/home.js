@@ -18,6 +18,13 @@ async function getUsersData(){
     if(document.getElementsByClassName("profile-card-actions")){
         const actions = Array.prototype.slice.call(document.getElementsByClassName("profile-card-actions"));
         console.log(actions);
+        actions.forEach(action => {
+            const id = action.id;
+            console.log(action);
+            action.children[0].addEventListener("click", () => {
+                console.log('favroite', id);
+            })
+        });
     }
 }
 

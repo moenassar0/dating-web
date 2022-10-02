@@ -47,11 +47,18 @@ class UserController extends Controller
         }
 
         $id = auth()->user()->id;
+        $interested_gender = auth()->user()->interested_gender;
+        $gender = auth()->user()->gender;
+
         //Get users who are blocked by the user logged in and the users who blocked the user logged in using UNION
         $blocked_users = BlockedUser::select('blocked_users.user_id')->where('blocked_user_id', $id)->union(
         BlockedUser::select('blocked_users.blocked_user_id')->where('user_id', $id))->get();
         //->orWhere('blocked_user_id', $id)->get();
         $users = User::select('users.*')
+        ->where('users.gender', $interested_gender)
+        ->where('users.interested_gender', $gender)
+        //filter own user from result
+        ->where('id','!=', $id)
         ->whereNotIn('id', $blocked_users)->get();
         //
         //->select('users.*')
