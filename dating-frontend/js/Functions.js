@@ -28,14 +28,14 @@
     }
 }*/
 
-export const baseURL = "http://127.0.0.1:8000/api/auth/login";
+export const baseURL = "http://127.0.0.1:8000/api";
 export const postAPI = async (api_url, api_data, api_token = null) => {
     try{
         return await axios.post(
             api_url,
             api_data,
             { headers:{
-                    'Authorization' : "token " + api_token
+                    'Authorization' : "Bearer " + api_token
                 }
             }
         );
