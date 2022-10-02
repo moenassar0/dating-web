@@ -11,7 +11,7 @@ const login_btn = document.getElementById("login-btn");
 })*/
 
 login_btn.addEventListener("click", async () => {
-    const response = await Functions.postAPI(Functions.baseURL, {"email": login_email.value,
+    const response = await Functions.postAPI(Functions.baseURL + "/auth/login/", {"email": login_email.value,
     "password": login_password.value})
     logUserIn(response.data);
 
