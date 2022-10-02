@@ -15,6 +15,11 @@ async function getUsersData(){
         profileCardHTML += ProfileCard(user);
     })
     profile_card_container.innerHTML = profileCardHTML;
+    if(document.getElementsByClassName("profile-card-actions")){
+        const actions = Array.prototype.slice.call(document.getElementsByClassName("profile-card-actions"));
+        console.log(actions);
+    }
 }
 
 getUsersData();
+
