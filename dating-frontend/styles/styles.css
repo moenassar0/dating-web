@@ -106,6 +106,8 @@ body{
     padding: 10px 10px;
     background-color: white;
     border-radius: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 /* Utilities */
@@ -121,3 +123,9 @@ body{
     align-self: flex-end;
 }
 
+/* Responsitivity */
+@media only screen and (max-width: 400px) {
+    .profile-card{
+        width: 40%;
+    }
+  }
