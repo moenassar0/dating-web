@@ -34,8 +34,16 @@ class UserController extends Controller
     }
 
     public function getUsers(Request $request){
-        $blocked_users = BlockedUser::select('blocked_users.blocked_user_id')->where('id', $request->id)->get();
-        $users = User::select('users.id')
+        if(!auth()->user()){
+            return response()->json(['message' => "Not authorized!"]);
+        }
+
+        $id = auth()->user()->id;
+        //Get users who are blocked by the user logged in and the users who blocked the user logged in using UNION
+        $blocked_users = BlockedUser::select('blocked_users.user_id')->where('blocked_user_id', $id)->union(
+        BlockedUser::select('blocked_users.blocked_user_id')->where('user_id', $id))->get();
+        //->orWhere('blocked_user_id', $id)->get();
+        $users = User::select('users.*')
         ->whereNotIn('id', $blocked_users)->get();
         //
         //->select('users.*')
