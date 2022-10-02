@@ -40,3 +40,23 @@ async function logUserIn(data){
         window.location.href="home.html";
     }
 }
+
+
+//Validation functions
+function validateEmail(email) {
+    const myArray = email.split("@");
+    if(myArray[0].length < 1){
+        return false;
+    }
+    if(myArray[1].length < 2){
+        return false;
+    }
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+function validateName(name) {
+    if(name.value.length < 2)
+        return false;
+    return true;
+}
