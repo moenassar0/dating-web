@@ -24,10 +24,10 @@ class AuthController extends Controller
         $user = new User;
 
         $user->f_name = $request->f_name;
-        $user->l_name = $request->f_name;
+        $user->l_name = $request->l_name;
         $user->picture_url = $request->f_name;
-        $user->gender = $request->f_name;
-        $user->interested_gender = $request->f_name;
+        $user->gender = $request->gender;
+        $user->interested_gender = $request->interested_gender;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();

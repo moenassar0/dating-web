@@ -14,12 +14,12 @@ class UserController extends Controller
         $user = new User;
 
         $user->f_name = $request->f_name;
-        $user->l_name = $request->f_name;
-        $user->picture_url = $request->f_name;
-        $user->gender = $request->f_name;
-        $user->interested_gender = $request->f_name;
-        $user->email = $request->f_name;
-        $user->password = $request->f_name;
+        $user->l_name = $request->l_name;
+        $user->picture_url = $request->l_name;
+        $user->gender = $request->gender;
+        $user->interested_gender = $request->interested_gender;
+        $user->email = $request->email;
+        $user->password = $request->password;
         $user->save();
         return response()->json(['message' => 'success']);
     }
