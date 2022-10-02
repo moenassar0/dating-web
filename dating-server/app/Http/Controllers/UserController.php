@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\BlockedUser;
+use App\Http\Controllers\DB;
 
 class UserController extends Controller
 {
@@ -27,6 +29,21 @@ class UserController extends Controller
 
         if(!$user->isEmpty())
             return response()->json(['message' => 'found']);
+        else
+            return response()->json(['message' => 'not found']);
+    }
+
+    public function getUsers(Request $request){
+        $blocked_users = BlockedUser::select('blocked_users.blocked_user_id')->where('id', $request->id)->get();
+        $users = User::select('users.id')
+        ->whereNotIn('id', $blocked_users)->get();
+        //
+        //->select('users.*')
+        //->whereNotIn('id', DB::table('blocked')->select('id_user')->where('id_user', '=', $id)->get()->toArray())
+        //->get();
+
+        if(!$users->isEmpty())
+            return response()->json(['message' => $users]);
         else
             return response()->json(['message' => 'not found']);
     }
