@@ -18,6 +18,8 @@ use App\Http\Controllers\AuthController;
 Route::post("/user/add", [UserController::class, "store"]);
 Route::post("/user/find", [UserController::class, "findUser"]);
 Route::post("/users/find", [UserController::class, "getUsers"]);
+Route::post("/users/image", [UserController::class, "insertImage"]);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
