@@ -68,7 +68,25 @@ body{
     padding: 0 10px;
 }
 
+.navbar-item{
+    display: flex;
+    color: white;
+    width: 20%;
+    height:100%;
+    border-radius: 15px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
 
+.navbar-item:hover{
+    background: #6e274c;
+}
+
+.navbar-logo-img{
+    max-width: 100%;
+    max-height: 100%;
+}
 
 /* Utilities */
 
