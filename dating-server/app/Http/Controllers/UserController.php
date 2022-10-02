@@ -15,11 +15,19 @@ class UserController extends Controller
 
         $user->f_name = $request->f_name;
         $user->l_name = $request->l_name;
-        $user->picture_url = $request->l_name;
         $user->gender = $request->gender;
+        $user->bio = $request->bio;
         $user->interested_gender = $request->interested_gender;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
+
+        //Generate image and it's URL
+        $base64_string = $request->base64_string;
+        $decoder = base64_decode($base64_string);
+        $url = 'C:\xampp\htdocs\dating-web\dating-frontend\assets\uploaded_images/' . $request->email . ".jpg";
+        file_put_contents($url, $decoder);
+        $user->picture_url = "/dating-web/dating-frontend/assets/uploaded_images/" . $request->email . ".jpg";
+
         $user->save();
         return response()->json(['message' => 'success']);
     }
@@ -54,5 +62,9 @@ class UserController extends Controller
             return response()->json(['message' => $users]);
         else
             return response()->json(['message' => 'not found']);
+    }
+
+    public function insertImage(Request $request){
+
     }
 }
