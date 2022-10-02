@@ -64,7 +64,7 @@ signup_btn.addEventListener("click", () => {
                 f_name: f_name.value,
                 l_name: l_name.value, 
                 gender: gender.options[gender.selectedIndex].value,
-                interest_gender: interested_gender.options[interested_gender.selectedIndex].value,
+                interested_gender: interested_gender.options[interested_gender.selectedIndex].value,
                 email: signup_email.value,
                 password: signup_password.value
             }
@@ -81,7 +81,8 @@ async function logUserIn(data){
 }
 
 async function signUserUp(data){
-
+    const response = await Functions.postAPI(Functions.baseURL + "/auth/register/", data);
+    console.log(response);
 }
 
 
