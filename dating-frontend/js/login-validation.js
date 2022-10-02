@@ -15,11 +15,7 @@ const signup_email = document.getElementById("signup-email");
 const signup_password = document.getElementById("signup-password");
 const signup_btn = document.getElementById("signup-btn");
 
-/*login_btn.addEventListener("click", async () => {
-    console.log(Functions.postAPI(Functions.baseURL, {"email": login_email.value,
-    "password": login_password.value}));
 
-})*/
 
 go_signup.addEventListener("click", () => {
     signup_form_container.classList.remove("hidden");
@@ -31,6 +27,11 @@ login_btn.addEventListener("click", async () => {
     "password": login_password.value})
     logUserIn(response.data);
 
+})
+
+signup_btn.addEventListener("click", () => {
+    console.log(f_name.value, l_name.value, gender.options[gender.selectedIndex].value,
+         interested_gender.options[interested_gender.selectedIndex].value, signup_email.value, signup_password.value);
 })
 
 async function logUserIn(data){
