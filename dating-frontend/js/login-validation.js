@@ -18,6 +18,7 @@ const signup_email = document.getElementById("signup-email");
 const signup_password = document.getElementById("signup-password");
 const signup_btn = document.getElementById("signup-btn");
 
+let error_message = "";
 
 
 go_signup.addEventListener("click", () => {
@@ -37,10 +38,21 @@ signup_btn.addEventListener("click", () => {
          interested_gender.options[interested_gender.selectedIndex].value, signup_email.value, signup_password.value);
 
          error_message = "";
-         if(!validateName(f_name.value)){
-             error_message += "Name is too short! (Minimum 2 characaters) <br>"
-         }
-
+        if(!validateName(f_name.value)){
+             error_message += "First name is too short! (Minimum 2 characaters) <br>"
+        }
+        if(error_message != ''){
+            success_div.classList.add("hidden");
+            error_div.classList.remove("hidden");
+            error_div.innerHTML = error_message;
+        }
+        else{
+            error_div.classList.add("hidden");
+            error_message = '';
+            success_div.innerHTML = "Successfully sent the message!"
+            success_div.classList.remove("hidden");
+            //sendRequest(name_field.value, email_field.value, phone_field.value, message_field.value);
+        }
          console.log(error_message);
 })
 
@@ -66,7 +78,7 @@ function validateEmail(email) {
 }
 
 function validateName(name) {
-    if(name.value.length < 2)
+    if(name.length < 2)
         return false;
     return true;
 }
