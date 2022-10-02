@@ -13,6 +13,7 @@ const signup_form_container = document.getElementById("signup-form-container");
 const f_name = document.getElementById("f-name");
 const l_name = document.getElementById("l-name");
 const gender = document.getElementById("gender");
+const bio = document.getElementById("bio");
 const interested_gender = document.getElementById("interested-gender");
 const signup_email = document.getElementById("signup-email");
 const signup_password = document.getElementById("signup-password");
@@ -32,8 +33,28 @@ login_btn.addEventListener("click", async () => {
     logUserIn(response.data);
 
 })
+///////
+const picture = document.getElementById("image");
+picture.addEventListener("change", async e => {
+    const file = picture.files[0];
+    const reader = new FileReader();
 
-signup_btn.addEventListener("click", () => {
+    reader.addEventListener("load", async () => {
+        let imageinbase = reader.result;
+        //split to remove "data:image/png;base64,"
+        const pure64base = imageinbase.split(",");
+        let base64_string = pure64base[1];
+        //console.log(base64_string);
+        
+        //Check if signup btn is pressed after loading image
+        signup_btn.addEventListener("click", () => {
+            validateSignUp(base64_string);
+        })
+    })
+    reader.readAsDataURL(file);
+})
+
+function validateSignUp(base64_string){
     console.log(f_name.value, l_name.value, gender.options[gender.selectedIndex].value,
         interested_gender.options[interested_gender.selectedIndex].value, signup_email.value, signup_password.value);
 
@@ -65,13 +86,21 @@ signup_btn.addEventListener("click", () => {
                 l_name: l_name.value, 
                 gender: gender.options[gender.selectedIndex].value,
                 interested_gender: interested_gender.options[interested_gender.selectedIndex].value,
+                bio: bio.value,
                 email: signup_email.value,
-                password: signup_password.value
+                password: signup_password.value,
+                base64_string: base64_string
             }
+            console.log(data);
             signUserUp(data);
         }
         console.log(error_message);
-})
+}
+
+
+
+
+
 
 async function logUserIn(data){
     if(data.access_token){
@@ -81,7 +110,7 @@ async function logUserIn(data){
 }
 
 async function signUserUp(data){
-    const response = await Functions.postAPI(Functions.baseURL + "/auth/register/", data);
+    const response = await Functions.postAPI(Functions.baseURL + "/user/add", data);
     console.log(response);
 }
 

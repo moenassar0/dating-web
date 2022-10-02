@@ -2,7 +2,7 @@ export const ProfileCard = (profileCard) => {
     return(
         `
             <div class="profile-card">
-                <img class="navbar-logo-img" src="./assets/images/empty_profile.png">
+                <img class="navbar-logo-img" src="${profileCard.picture_url}">
                 <div class="profile-card-title">
                     ${profileCard.f_name + " " + profileCard.l_name}
                 </div>
