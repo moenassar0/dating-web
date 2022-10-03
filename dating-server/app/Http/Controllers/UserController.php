@@ -100,4 +100,18 @@ class UserController extends Controller
         return response()->json(['message' => 'Favorite inserted!']);
 
     }
+
+    public function blockUser(Request $request){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+        $blocked = new BlockedUser;
+
+        $blocked->user_id = auth()->user()->id;
+        $blocked->blocked_user_id = $request->blocked_user_id;
+
+        $blocked->save();
+        return response()->json(['message' => 'Blocked user!']);
+
+    }
+    
 }
