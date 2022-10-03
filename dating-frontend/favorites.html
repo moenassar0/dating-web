@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="home-container">
+            <div class="navbar">
+                <div class="navbar-logo">
+                    <img class="navbar-logo-img" src="./assets/images/icon.png" width="50px" height="50px">
+                </div>
+                <div id="home-btn" class="navbar-item">
+                    Home
+                </div>
+                <div id="profile-btn" class="navbar-item">
+                    Profile
+                </div>
+                <div id="favorites-btn" class="navbar-item">
+                    Favorites
+                </div>
+                <div id="messages-btn" class="navbar-item">
+                    Messages
+                </div>
+            </div>
+            <div id="profile-card-container" class="profile-card-container">
+
+            </div>
+        </div>
+    </div>
+    <div id="block-popup" class="block-popup hidden">
+        <div class="block-popup-form">
+            <div class="close-btn-container">
+                <div class="close-btn" id="close-btn">X</div>
+            </div>
+            <h3>Are you sure you want to block this user?</h3>
+            <button id="block-button" class="main-button">Block</button>
+        </div>
+    </div>
+    <div class="cover hidden" id="cover"></div>
+    <script type="module" src="./js/favorites.js"></script>
+</body>
+</html>
