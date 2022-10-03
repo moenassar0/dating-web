@@ -54,3 +54,11 @@ favorites_btn.addEventListener("click", () => {
 messages_btn.addEventListener("click", () => {
     window.location.href="messages.html";
 })
+
+//Validate user's token, if valid refresh with a new token and a new expiration date
+async function validateToken(){
+    const response = await Functions.postAPI(Functions.baseURL + "/auth/authUser", {}, token);
+    localStorage.setItem("token", (response.data.access_token));
+}
+
+validateToken();
