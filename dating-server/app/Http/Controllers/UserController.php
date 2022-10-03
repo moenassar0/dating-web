@@ -82,9 +82,16 @@ class UserController extends Controller
 
         $id = auth()->user()->id;
 
+        //Get users who are blocked by the user logged in and the users who blocked the user logged in using UNION
+        $blocked_users = BlockedUser::select('blocked_users.user_id')->where('blocked_user_id', $id)->union(
+        BlockedUser::select('blocked_users.blocked_user_id')->where('user_id', $id))->get();
+
         $users = Favorite::select('users.id', 'users.f_name', 'users.l_name','users.bio', 'users.picture_url')
         ->join('users', 'users.id', '=', 'favorites.favorited_user_id')
-        ->where('favorites.user_id', $id)->get();
+        ->where('favorites.user_id', $id)
+        //Filter users that are blocking or are blocked
+        ->whereNotIn('users.id', $blocked_users)
+        ->get();
         return response()->json(['message' => $users]);
     }
 
