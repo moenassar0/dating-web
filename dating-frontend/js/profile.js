@@ -26,7 +26,7 @@ async function editPopup(){
         cover.classList.remove("hidden");
     })
 
-    edit_button.addEventListener("click", () => {
+    edit_button.addEventListener("click", async () => {
 
         error_message = "";
         if(!validateName(f_name.value, 2)){
@@ -48,6 +48,15 @@ async function editPopup(){
             error_message = '';
             success_div.innerHTML = "Updated profile!"
             success_div.classList.remove("hidden");
+            const data = {
+                f_name: f_name.value,
+                l_name: l_name.value, 
+                gender: gender.options[gender.selectedIndex].value,
+                interested_gender: interested_gender.options[interested_gender.selectedIndex].value,
+                bio: bio.value
+            }
+            await Functions.postAPI(Functions.baseURL + "/user/edit", data, token);
+            window.location.href = "profile.html";
         }
     })
 
