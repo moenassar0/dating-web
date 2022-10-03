@@ -48,3 +48,39 @@ export const consoleLog = () => {
     console.log("gg");
 }
 
+/*
+//Validate user's token, if valid refresh with a new token and a new expiration date
+export const validateToken = async (token) => {
+    const response = await postAPI(baseURL + "/auth/authUser", {}, token);
+    //console.log(response);
+    //localStorage.setItem("token", (response.data.access_token));
+    return token;
+}*/
+
+//Navigation buttons
+const home_btn = document.getElementById("home-btn");
+const profile_btn = document.getElementById("profile-btn");
+const favorites_btn = document.getElementById("favorites-btn");
+const messages_btn = document.getElementById("messages-btn");
+
+//Navigation event listeners home_btn, profile_btn, favorites_btn, messages_btn
+export const navigationButtons = () => {
+    home_btn.addEventListener("click", () => {
+        window.location.href="home.html";
+    })
+    
+    profile_btn.addEventListener("click", () => {
+        window.location.href="profile.html";
+    })
+    
+    favorites_btn.addEventListener("click", () => {
+        window.location.href="favorites.html";
+    })
+    
+    messages_btn.addEventListener("click", () => {
+        window.location.href="messages.html";
+    })
+}
+
+
+
