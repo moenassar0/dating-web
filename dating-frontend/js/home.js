@@ -1,5 +1,6 @@
 import * as Functions from "./Functions.js";
 import {ProfileCard} from "./Components/ProfileCard.js";
+import {FavoriteUser} from "./FavoriteUser.js";
 
 let token = localStorage.getItem("token");
 const profile_card_container = document.getElementById("profile-card-container");
@@ -22,7 +23,7 @@ async function getUsersData(){
             const id = action.id;
             console.log(action);
             action.children[0].addEventListener("click", () => {
-                console.log('favroite', id);
+                FavoriteUser(id);
             })
         });
     }
