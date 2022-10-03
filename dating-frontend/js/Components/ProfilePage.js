@@ -14,7 +14,7 @@ export const ProfilePage = (profilePage) => {
                         Full Name:
                     </div>
                     <div class="info-field-content">
-                        Mohamad Nassar
+                        ${profilePage.f_name}
                     </div>
                 </div>
                 <div class="info-field">
