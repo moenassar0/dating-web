@@ -15,12 +15,41 @@ const interested_gender = document.getElementById("interested-gender");
 const edit_button = document.getElementById("edit-button");
 const close_popup_button = document.getElementById("close-btn");
 const cover = document.getElementById("cover");
+let error_message = "";
 
 async function editPopup(){
     const popup_edit_button = document.getElementById("edit-profile");
     popup_edit_button.addEventListener("click", () => {
         edit_form.classList.remove("hidden");
         cover.classList.remove("hidden");
+    })
+
+    edit_button.addEventListener("click", () => {
+        console.log(f_name.value, l_name.value, gender.options[gender.selectedIndex].value,
+            interested_gender.options[interested_gender.selectedIndex].value);
+    
+            error_message = "";
+            if(!validateName(f_name.value, 2)){
+                 error_message += "First name is too short! (Minimum 2 characaters) <br>"
+            }
+            if(!validateName(l_name.value, 2)){
+                error_message += "Last name is too short! (Minimum 2 characaters) <br>"
+            }
+            if(!validateName(bio.value, 12)){
+                error_message += "Biography is too short! (Minimum 12 characaters) <br>"
+            }
+            if(error_message != ''){
+                //success_div.classList.add("hidden");
+                //error_div.classList.remove("hidden");
+                //error_div.innerHTML = error_message;
+            }
+            else{
+                //error_div.classList.add("hidden");
+                //error_message = '';
+                //success_div.innerHTML = "Successfully sent the message!"
+                //success_div.classList.remove("hidden");
+            }
+            console.log(error_message);
     })
 }
 
