@@ -231,6 +231,15 @@
     font-weight: bold;
 }
 
+/* Chat Page */
+.chat-main-container{
+    display: flex;
+    width: 100%;
+    padding: 10px 10px;
+    height: auto;
+    min-height: 100vh;
+}
+
 /* Utilities */
 .center-self{
     display:flex;
