@@ -88,6 +88,16 @@ class UserController extends Controller
         return response()->json(['message' => $users]);
     }
 
+    public function insertFavorite(Request $request){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+        $favorite = new Favorite;
 
-    
+        $favorite->user_id = auth()->user()->id;
+        $favorite->favorited_user_id = $request->favorited_user_id;
+
+        $favorite->save();
+        return response()->json(['message' => 'Favorite inserted!']);
+
+    }
 }
