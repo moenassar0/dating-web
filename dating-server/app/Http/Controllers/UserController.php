@@ -119,5 +119,19 @@ class UserController extends Controller
             return response()->json(['message' => "Not authorized!"]);
         return response()->json(['message' => auth()->user()]);
 
-    }    
+    }
+
+    public function editUser(Request $request){
+        $user = User::find(auth()->user()->id);
+
+        $user->f_name = $request->f_name;
+        $user->l_name = $request->l_name;
+        $user->gender = $request->gender;
+        $user->bio = $request->bio;
+        $user->interested_gender = $request->interested_gender;
+        $user->save();
+        return response()->json(['message' => $user]);
+
+    }
+    
 }
