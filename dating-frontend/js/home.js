@@ -15,11 +15,7 @@ await validateToken();
 
 const profile_card_container = document.getElementById("profile-card-container");
 
-//Navigation buttons
-const home_btn = document.getElementById("home-btn");
-const profile_btn = document.getElementById("profile-btn");
-const favorites_btn = document.getElementById("favorites-btn");
-const messages_btn = document.getElementById("messages-btn");
+
 
 //Block popup
 const close_block_popup = document.getElementById("close-btn");
@@ -67,21 +63,7 @@ async function getUsersData(){
 
 getUsersData();
 
-//Navigation event listeners
-home_btn.addEventListener("click", () => {
-    window.location.href="home.html";
-})
+Functions.navigationButtons();
 
-profile_btn.addEventListener("click", () => {
-    window.location.href="profile.html";
-})
-
-favorites_btn.addEventListener("click", () => {
-    window.location.href="favorites.html";
-})
-
-messages_btn.addEventListener("click", () => {
-    window.location.href="messages.html";
-})
 
 

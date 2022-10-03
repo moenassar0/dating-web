@@ -25,3 +25,6 @@ async function getProfile(){
 
 getProfile();
 
+Functions.navigationButtons();
+
+
