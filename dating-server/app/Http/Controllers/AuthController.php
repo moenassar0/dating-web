@@ -117,12 +117,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function profile(){
-        if(auth()->user()){
-            return response()->json(auth()->user());
-        }
-        else
-            echo 'gg';
+    public function authUser(Request $request){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+        return $this->refresh();
     }
 
 
