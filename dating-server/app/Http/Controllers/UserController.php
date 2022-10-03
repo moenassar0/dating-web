@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\BlockedUser;
+use App\Models\Favorite;
 use App\Http\Controllers\DB;
 
 class UserController extends Controller
@@ -74,4 +75,19 @@ class UserController extends Controller
     public function insertImage(Request $request){
 
     }
+
+    public function getFavorites(){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+
+        $id = auth()->user()->id;
+
+        $users = Favorite::select('users.id', 'users.f_name')
+        ->join('users', 'users.id', '=', 'favorites.favorited_user_id')
+        ->where('favorites.user_id', $id)->get();
+        return response()->json(['message' => $users]);
+    }
+
+
+    
 }
