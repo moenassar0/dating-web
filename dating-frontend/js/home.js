@@ -5,6 +5,12 @@ import {FavoriteUser} from "./FavoriteUser.js";
 let token = localStorage.getItem("token");
 const profile_card_container = document.getElementById("profile-card-container");
 
+//Navigation buttons
+const home_btn = document.getElementById("home-btn");
+const profile_btn = document.getElementById("profile-btn");
+const favorites_btn = document.getElementById("favorites-btn");
+const messages_btn = document.getElementById("messages-btn");
+
 
 //Find people the user is interested in
 async function getUsersData(){
@@ -23,7 +29,8 @@ async function getUsersData(){
             const id = action.id;
             console.log(action);
             action.children[0].addEventListener("click", () => {
-                FavoriteUser(id);
+                FavoriteUser(id, token);
+                action.children[0].src = "../dating-frontend/assets/images/liked.png";
             })
         });
     }
@@ -31,3 +38,19 @@ async function getUsersData(){
 
 getUsersData();
 
+//Navigation event listeners
+home_btn.addEventListener("click", () => {
+
+})
+
+profile_btn.addEventListener("click", () => {
+
+})
+
+favorites_btn.addEventListener("click", () => {
+
+})
+
+messages_btn.addEventListener("click", () => {
+
+})
