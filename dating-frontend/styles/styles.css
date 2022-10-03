@@ -186,7 +186,20 @@ body{
     padding-top: 5px;
 }
 
+.close-btn{
+    color:#4E3350;
+    font-size: 1.5rem;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.close-btn:hover{
+    background-color: #FF5B8D;
+}
 
 /* Utilities */
 .center-self{
