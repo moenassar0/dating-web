@@ -196,7 +196,23 @@ body{
     display: block;
 }
 
+.main-button{
+    border-radius: 15px;
+    color: grey;
+    background-color: white;
+    width: 200px;
+    height: 75px;
+    border-color: transparent;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-style: inherit;
+}
 
+.main-button:hover{
+    background-color: #FF5B8D;
+    color:white;
+}
 
 /* Responsitivity */
 @media only screen and (max-width: 400px) {
