@@ -82,7 +82,7 @@ class UserController extends Controller
 
         $id = auth()->user()->id;
 
-        $users = Favorite::select('users.id', 'users.f_name')
+        $users = Favorite::select('users.id', 'users.f_name', 'users.l_name','users.bio', 'users.picture_url')
         ->join('users', 'users.id', '=', 'favorites.favorited_user_id')
         ->where('favorites.user_id', $id)->get();
         return response()->json(['message' => $users]);
