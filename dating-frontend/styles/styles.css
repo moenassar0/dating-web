@@ -240,6 +240,16 @@
     min-height: 100vh;
 }
 
+.chat-users{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 10px 10px;
+    height: auto;
+    min-height: 100%;
+    background-color: white;
+}
+
 /* Utilities */
 .center-self{
     display:flex;
