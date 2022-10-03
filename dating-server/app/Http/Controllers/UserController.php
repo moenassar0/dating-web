@@ -113,5 +113,11 @@ class UserController extends Controller
         return response()->json(['message' => 'Blocked user!']);
 
     }
-    
+
+    public function getProfile(){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+        return response()->json(['message' => auth()->user()]);
+
+    }    
 }
