@@ -40,17 +40,17 @@ getUsersData();
 
 //Navigation event listeners
 home_btn.addEventListener("click", () => {
-
+    window.location.href="home.html";
 })
 
 profile_btn.addEventListener("click", () => {
-
+    window.location.href="profile.html";
 })
 
 favorites_btn.addEventListener("click", () => {
-
+    window.location.href="favorites.html";
 })
 
 messages_btn.addEventListener("click", () => {
-
+    window.location.href="messages.html";
 })
