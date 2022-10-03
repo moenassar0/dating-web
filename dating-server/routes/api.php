@@ -17,8 +17,14 @@ use App\Http\Controllers\AuthController;
 
 Route::post("/user/add", [UserController::class, "store"]);
 Route::post("/user/find", [UserController::class, "findUser"]);
+Route::post("/user/favorite", [UserController::class, "insertFavorite"]);
+Route::post("/user/block", [UserController::class, "blockUser"]);
+Route::post("/user/favorites", [UserController::class, "getFavorites"]);
 Route::post("/users/find", [UserController::class, "getUsers"]);
 Route::post("/users/image", [UserController::class, "insertImage"]);
+Route::post("/user/profile", [UserController::class, "getProfile"]);
+Route::post("/user/edit", [UserController::class, "editUser"]);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -29,4 +35,5 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function($router) {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/profile', [AuthController::class, 'profile']);
+    Route::post('/authUser', [AuthController::class, 'authUser']);
 });
