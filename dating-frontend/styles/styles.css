@@ -161,7 +161,7 @@
     display: flex;
     align-content: center;
     flex-direction: column;
-    top: 25%;
+    top: 20%;
     left: 25%;
     position: absolute;
     width: 50%;
@@ -303,21 +303,38 @@
 /* Responsitivity */
 @media only screen and (max-width: 700px){
     .block-popup{
-        top: 20%;
-        left: 20%;
-        width: 60%;
-        height: 60%;
+        top: 15%;
+        left: 15%;
+        width: 70%;
+        height: 70%;
+    }
+
+    .block{
+        width: 70%;
+    }
+
+    .block-label{
+        width: 70%;
     }
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 450px){
     .profile-card{
         width: 40%;
     }
+
     .block-popup{
-        top: 10%;
-        left: 10%;
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+    }
+
+    .block{
         width: 80%;
-        height: 80%;
+    }
+
+    .block-label{
+        width: 80%;
     }
 }
