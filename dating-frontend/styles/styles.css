@@ -116,6 +116,7 @@ body{
     display: flex;
     width: 30%;
     flex-direction: column;
+    margin-right: 10px
 }
 
 .profile-info{
@@ -127,6 +128,15 @@ body{
 .profile-img-resize{
     width: 100%;
     height: 100%;
+}
+
+.info-field{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    border-radius: 15px;
+    background-color: white;
+    padding: 10px 10px
 }
 
 /* Utilities */
