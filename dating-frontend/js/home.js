@@ -14,8 +14,10 @@ const messages_btn = document.getElementById("messages-btn");
 //Block popup
 const close_block_popup = document.getElementById("close-btn");
 const block_popup = document.getElementById("block-popup");
+const cover = document.getElementById("cover");
 close_block_popup.addEventListener("click", () => {
     block_popup.classList.add("hidden");
+    cover.classList.add("hidden");
 })
 
 //Find people the user is interested in
@@ -41,6 +43,7 @@ async function getUsersData(){
 
             action.children[1].addEventListener("click", () => {
                 block_popup.classList.remove("hidden");
+                cover.classList.remove("hidden");
             })
         });
     }
@@ -69,6 +72,7 @@ messages_btn.addEventListener("click", () => {
 async function validateToken(){
     const response = await Functions.postAPI(Functions.baseURL + "/auth/authUser", {}, token);
     localStorage.setItem("token", (response.data.access_token));
+    token = localStorage.getItem("token");
 }
 
 validateToken();
