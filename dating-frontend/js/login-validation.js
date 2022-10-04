@@ -9,6 +9,8 @@ const login_password = document.getElementById("login-password");
 const login_btn = document.getElementById("login-btn");
 
 const go_signup = document.getElementById("go-signup");
+const go_login = document.getElementById("go-login");
+
 const signup_form_container = document.getElementById("signup-form-container");
 const f_name = document.getElementById("f-name");
 const l_name = document.getElementById("l-name");
@@ -25,6 +27,11 @@ let error_message = "";
 go_signup.addEventListener("click", () => {
     signup_form_container.classList.remove("hidden");
     login_form_container.classList.add("hidden");
+})
+
+go_login.addEventListener("click", () => {
+    signup_form_container.classList.add("hidden");
+    login_form_container.classList.remove("hidden");
 })
 
 login_btn.addEventListener("click", async () => {
