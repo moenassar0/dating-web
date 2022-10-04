@@ -442,6 +442,10 @@
     max-height: 50px;
 }
 
+.pointer{
+    cursor:pointer;
+}
+
 
 /* Responsitivity */
 @media only screen and (max-width: 700px){
