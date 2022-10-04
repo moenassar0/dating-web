@@ -22,4 +22,15 @@ class MessageController extends Controller
         return response()->json(['message' => $message]);
     }
 
+    public function getMessengers(){
+
+        $id = auth()->user()->id;
+
+        //Find the users that you sent a message to or received a message from
+        $peopleYouMessaged = Message::select('messages.receiver_id')->where('sender_id', $id)
+        ->union(Message::select('messages.sender_id')->where('receiver_id', $id))->get();
+
+        $users = User::select('*')->whereIn('users.id', $peopleYouMessaged)->get();
+        return response()->json(['message' => $users]);
+    }
 }
