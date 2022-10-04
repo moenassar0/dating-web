@@ -25,9 +25,23 @@ async function getMessengers(){
     chat_users.innerHTML = messengersHTML;
 }
 
+//Onclick listener on each messenger so we can show each messenger's chat logs
 function addChatFunctionality(){
     const messengers = Array.prototype.slice.call(document.getElementsByClassName("chat-user"));
     console.log(messengers);
+
+    messengers.forEach(messenger => {
+        const id = messenger.id;
+        console.log(id);
+        messenger.addEventListener("click", () => {
+            ShowMessages(id);
+        })
+    });
+}
+
+//Get chat history between two users
+function ShowMessages(){
+    
 }
 
 await getMessengers();
