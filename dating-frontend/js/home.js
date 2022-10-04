@@ -4,6 +4,8 @@ import {FavoriteUser} from "./FavoriteUser.js";
 import { BlockUser } from "./BlockUser.js";
 import { SendHiMessage } from "./SendHiMessage.js";
 
+const profile_card_container = document.getElementById("profile-card-container");
+
 let token = localStorage.getItem("token");
 //Validate user's token, if valid refresh with a new token and a new expiration date
 async function validateToken(){
@@ -13,8 +15,12 @@ async function validateToken(){
 }
 
 await validateToken();
-
-const profile_card_container = document.getElementById("profile-card-container");
+let lat1 = -1;
+let long1 = -1;
+navigator.geolocation.getCurrentPosition(function(position){
+    lat1 = (position.coords.latitude);
+    long1 = (position.coords.longitude);
+})
 
 
 
@@ -35,9 +41,21 @@ async function getUsersData(){
     
     let profileCardHTML = '';
     response.data.message.map(user => {
-        profileCardHTML += ProfileCard(user);
+
+        //Calculate distance from user
+        console.log(lat1, long1);
+        let location2 = user.location.split("/");
+        console.log(location2);
+        let lat2 = location2[0];
+        let long2 = location2[1];
+        let d = Functions.distance(lat1, lat2, long1, long2);
+        console.log(d);
+        profileCardHTML += ProfileCard(user, d);
+        /////////////////////////////
+        
     })
     profile_card_container.innerHTML = profileCardHTML;
+    
     if(document.getElementsByClassName("profile-card-actions")){
         const actions = Array.prototype.slice.call(document.getElementsByClassName("profile-card-actions"));
         console.log(actions);
