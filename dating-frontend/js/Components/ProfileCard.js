@@ -1,13 +1,16 @@
-export const ProfileCard = (profileCard) => {
+export const ProfileCard = (profileCard, distance) => {
     return(
         `
             <div class="profile-card">
                 <img class="navbar-logo-img" src="${profileCard.picture_url}">
-                <div class="profile-card-title">
+                <div style="margin-bottom: 5px;" class="profile-card-title">
                     ${profileCard.f_name + " " + profileCard.l_name}
                 </div>
-                <div class="profile-card-bio">
-                    I have no idea what to type here
+                <div style="margin-bottom: 5px;" class="profile-card-bio">
+                    ${profileCard.bio} 
+                </div>
+                <div>
+                    <span style="margin-bottom: 5px;">Distance: ${(Math.round(distance*100))/100 + ": KM"}</span>
                 </div>
                 <div id="${profileCard.id}" class="profile-card-actions">
                     <img class="pointer" width="25px" height="25px"src="../dating-frontend/assets/images/like.png">
@@ -18,3 +21,4 @@ export const ProfileCard = (profileCard) => {
         `
     )
 }
+
