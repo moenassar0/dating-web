@@ -42,4 +42,5 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function($router) {
     Route::post('/authUser', [AuthController::class, 'authUser']);
     Route::post("/user/send", [MessageController::class, "sendMessage"]);
     Route::post("/user/messengers", [MessageController::class, "getMessengers"]);
+    Route::post("/user/messages", [MessageController::class, "getMessages"]);
 });
