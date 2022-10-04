@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('f_name');
             $table->string('l_name');
-            $table->string('picture_url');
+            $table->string('picture_url');     
             $table->string("bio");
             $table->string('gender');
             $table->string('interested_gender');
