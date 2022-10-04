@@ -61,10 +61,6 @@ class UserController extends Controller
         //filter own user from result
         ->where('id','!=', $id)
         ->whereNotIn('id', $blocked_users)->get();
-        //
-        //->select('users.*')
-        //->whereNotIn('id', DB::table('blocked')->select('id_user')->where('id_user', '=', $id)->get()->toArray())
-        //->get();
 
         if(!$users->isEmpty())
             return response()->json(['message' => $users]);
@@ -138,6 +134,23 @@ class UserController extends Controller
         $user->interested_gender = $request->interested_gender;
         $user->save();
         return response()->json(['message' => $user]);
+
+    }
+
+    public function changeImage(Request $request){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+
+        $user = User::find(auth()->user()->id);
+
+        $base64_string = $request->base64_string;
+        $decoder = base64_decode($base64_string);
+        $url = 'C:\xampp\htdocs\dating-web\dating-frontend\assets\uploaded_images/' . $user->email . ".jpg";
+        file_put_contents($url, $decoder);
+        $user->picture_url = "/dating-web/dating-frontend/assets/uploaded_images/" . $user->email . ".jpg";
+
+        $user->save();
+        return response()->json(['message' => 'success']);
 
     }
     
