@@ -60,6 +60,7 @@ class UserController extends Controller
         ->where('users.interested_gender', $gender)
         //filter own user from result
         ->where('id','!=', $id)
+        ->where('incognito', 0)
         ->whereNotIn('id', $blocked_users)->get();
 
         if(!$users->isEmpty())
