@@ -66,7 +66,6 @@ async function editPopup(){
     })
 }
 
-
 //Validate user's token, if valid refresh with a new token and a new expiration date
 async function validateToken(){
     const response = await Functions.postAPI(Functions.baseURL + "/auth/authUser", {}, token);
@@ -86,9 +85,9 @@ async function getProfile(){
 };
 
 await getProfile();
+await updatePicture();
 editPopup();
 Functions.navigationButtons();
-
 
 function validateName(name, minLength) {
     if(name.length < minLength)
@@ -96,4 +95,22 @@ function validateName(name, minLength) {
     return true;
 }
 
+//Update picture:
+async function updatePicture(){
+    const picture = document.getElementById("edit-picture");
+    picture.addEventListener("change", async e => {
+        const file = picture.files[0];
+        const reader = new FileReader();
 
+        reader.addEventListener("load", async () => {
+            let imageinbase = reader.result;
+            //split to remove "data:image/png;base64,"
+            const pure64base = imageinbase.split(",");
+            let base64_string = pure64base[1];
+            const response = await Functions.postAPI(Functions.baseURL + "/user/updateImage", {base64_string: base64_string}, token);
+            console.log(response);
+            window.location.href = "profile.html";
+        })
+        reader.readAsDataURL(file);
+    })
+}
