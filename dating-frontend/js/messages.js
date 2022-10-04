@@ -13,5 +13,11 @@ async function validateToken(){
 
 await validateToken();
 
+//Get messengers
+async function getMessengers(){
+    const response = await Functions.postAPI(Functions.baseURL + "/auth/user/messengers", {}, token);
+    console.log(response);
+}
 
+await getMessengers();
 Functions.navigationButtons();
