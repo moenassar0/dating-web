@@ -160,13 +160,14 @@ class UserController extends Controller
         $user = User::find(auth()->user()->id);
         $incognito = $user->incognito;
 
-        if($incognito){
-            $user->incognito = 1;
+
+        if(!$incognito){
+            $user->incognito = true;
         }
         else{
-            $user->incognito = 0;
+            $user->incognito = false;
         }
         $user->save();
-        return response()->json(['message' => 'success']);
+        return response()->json(['message' => 'success, ' . $incognito]);
     }    
 }
