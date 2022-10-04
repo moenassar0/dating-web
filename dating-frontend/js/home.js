@@ -2,6 +2,7 @@ import * as Functions from "./Functions.js";
 import {ProfileCard} from "./Components/ProfileCard.js";
 import {FavoriteUser} from "./FavoriteUser.js";
 import { BlockUser } from "./BlockUser.js";
+import { SendHiMessage } from "./SendHiMessage.js";
 
 let token = localStorage.getItem("token");
 //Validate user's token, if valid refresh with a new token and a new expiration date
@@ -42,12 +43,14 @@ async function getUsersData(){
         console.log(actions);
         actions.forEach(action => {
             const id = action.id;
-            console.log(action);
+
+            //Favorite button action
             action.children[0].addEventListener("click", () => {
                 FavoriteUser(id, token);
                 action.children[0].src = "../dating-frontend/assets/images/liked.png";
             })
 
+            //Block button action
             action.children[1].addEventListener("click", () => {
                 block_popup.classList.remove("hidden");
                 cover.classList.remove("hidden");
@@ -55,6 +58,13 @@ async function getUsersData(){
                     BlockUser(id, token);
                     block_popup.classList.add("hidden");
                     cover.classList.add("hidden");
+                })
+            })
+
+            //Chat button action
+            action.children[2].addEventListener("click", () => {
+                block_button.addEventListener("click", () => {
+                    SendHiMessage(id, token);
                 })
             })
         });
