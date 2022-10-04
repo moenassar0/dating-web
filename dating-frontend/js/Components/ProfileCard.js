@@ -10,8 +10,9 @@ export const ProfileCard = (profileCard) => {
                     I have no idea what to type here
                 </div>
                 <div id="${profileCard.id}" class="profile-card-actions">
-                    <img width="25px" height="25px"src="../dating-frontend/assets/images/like.png">
-                    <img width="25px" height="25px"src="../dating-frontend/assets/images/ban-button.svg">
+                    <img class="pointer" width="25px" height="25px"src="../dating-frontend/assets/images/like.png">
+                    <img class="pointer" width="25px" height="25px"src="../dating-frontend/assets/images/ban-button.svg">
+                    <img class="pointer" width="25px" height="25px"src="../dating-frontend/assets/images/chat.png">
                 </div>
             </div>
         `
