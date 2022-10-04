@@ -7,22 +7,15 @@ import { SendHiMessage } from "./SendHiMessage.js";
 const profile_card_container = document.getElementById("profile-card-container");
 
 let token = localStorage.getItem("token");
-//Validate user's token, if valid refresh with a new token and a new expiration date
-async function validateToken(){
-    const response = await Functions.postAPI(Functions.baseURL + "/auth/authUser", {}, token);
-    localStorage.setItem("token", (response.data.access_token));
-    token = localStorage.getItem("token");
-}
+await Functions.validateUser();
+token = localStorage.getItem("token");
 
-await validateToken();
 let lat1 = -1;
 let long1 = -1;
 navigator.geolocation.getCurrentPosition(function(position){
     lat1 = (position.coords.latitude);
     long1 = (position.coords.longitude);
 })
-
-
 
 //Block popup
 const close_block_popup = document.getElementById("close-btn");
