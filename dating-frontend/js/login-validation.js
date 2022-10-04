@@ -44,7 +44,6 @@ picture.addEventListener("change", async e => {
         //split to remove "data:image/png;base64,"
         const pure64base = imageinbase.split(",");
         let base64_string = pure64base[1];
-        //console.log(base64_string);
         
         //Check if signup btn is pressed after loading image
         signup_btn.addEventListener("click", () => {
@@ -52,6 +51,14 @@ picture.addEventListener("change", async e => {
         })
     })
     reader.readAsDataURL(file);
+})
+
+signup_btn.addEventListener("click", () => {
+    error_message += "Please attach an image! <br>";
+    success_div.classList.add("hidden");
+    error_div.classList.remove("hidden");
+    error_div.innerHTML = error_message;
+    error_message = '';
 })
 
 function validateSignUp(base64_string){
@@ -94,7 +101,6 @@ function validateSignUp(base64_string){
             console.log(data);
             signUserUp(data);
         }
-        console.log(error_message);
 }
 
 

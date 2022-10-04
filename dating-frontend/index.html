@@ -83,20 +83,26 @@
             <div class="form-block center-self">
                 <img src="./assets/images/icon.png" width="150px" height="150px">
             </div>
-            <div class="block">
-                <input class="input" type="text" name="f-name" id="f-name" placeholder="First Name">
+            <div class="signup-block">
+                <input class="signup-input" type="text" name="f-name" id="f-name" placeholder="First Name">
             </div>
-            <div class="block">
-                <input class="input" type="text" name="l-name" id="l-name" placeholder="Last Name">
+            <div class="signup-block">
+                <input class="signup-input" type="text" name="l-name" id="l-name" placeholder="Last Name">
             </div>
-            <div class="block-label">
+            <div class="signup-block">
+                <input class="signup-input" type="text" name="l-name" id="signup-email" placeholder="Email">
+            </div>
+            <div class="signup-block">
+                <input class="signup-input" type="password" id="signup-password" placeholder="Password">
+            </div>
+            <div class="signup-block-label">
                 <label class="popup-label" for="gender">Gender: </label>
                 <select class="select" name="gender" id="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
-            <div class="block-label">
+            <div class="signup-block-label">
                 <label class="popup-label" for="interested-gender">Looking for:  </label>
                 <select class="select" name="interested-gender" id="interested-gender">
                     <option value="male">Male</option>
@@ -104,11 +110,15 @@
                     <option value="both">Both</option>
                 </select>
             </div>
-            <div class="block-label">
+            <div class="signup-block-label">
+                <label class="popup-label" for="image">Upload Image: </label>
+                <input type="file" name="image" id="image">
+            </div>
+            <div class="signup-block-label">
                 <label class="popup-label" for="interested-gender">Biography:  </label>
                 <textarea class="bio-form" id="bio"></textarea>
             </div>
-            <div class="block">
+            <div class="signup-block">
                 <div id="error-div" class="error-div hidden">
 
                 </div>
@@ -116,8 +126,7 @@
 
                 </div>
             </div>
-            <button id="edit-button" class="main-button">Edit</button>
-
+            <button id="signup-btn" class="main-button">Signup</button>
         </div>
     </div>
     <script type="module" src="./js/login-validation.js"></script>
