@@ -1,4 +1,9 @@
 export const ProfilePage = (profilePage) => {
+    let incognitoMode = false;
+    if(profilePage.incognito)
+        incognitoMode = true;
+    else
+        incognitoMode = false;
     return(
         `
         <div class="profile-image">
@@ -40,7 +45,8 @@ export const ProfilePage = (profilePage) => {
                     ${profilePage.interested_gender}
                 </div>
             </div>
-            <div class="">
+            <div style="margin-top: 10px" class="">
+                <button id="toggle-incognito" class="main-button" style="width: 200px;" id="edit-profile">Toggle Incognito: ${incognitoMode}</button>
                 <button class="main-button" id="edit-profile">Edit Profile</button>
                 <label for="edit-picture" class="edit-picture-button">Edit Picture<input type="file" class="hidden" id="edit-picture" /></label>
             </div>
