@@ -256,13 +256,25 @@
     padding: 5px 5px;
     width: 100%;
     height: 15%;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: black;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    cursor: pointer;
+    align-items: center;
+}
+
+.chat-user:hover{
+    box-shadow: inset 200px 0 0 0 #935196;
+    color: white;
 }
 
 .circle-img{
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .chat-messages-container{
