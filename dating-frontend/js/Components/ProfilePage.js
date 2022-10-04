@@ -1,51 +1,51 @@
 export const ProfilePage = (profilePage) => {
     return(
         `
-        <div id="profile-card-container" class="profile-card-container">
-            <div class="profile-image">
-                <img class="profile-img-resize" src="./assets/images/empty_profile.png">
-                <div class="profile-biography">
-                    ${profilePage.bio}
+        <div class="profile-image">
+            <img class="profile-img-resize" src="${profilePage.picture_url}">
+            <div class="profile-biography">
+                ${profilePage.bio}
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="info-field">
+                <div class="info-field-label">
+                    Full Name:
+                </div>
+                <div class="info-field-content">
+                    ${profilePage.f_name + " " + profilePage.l_name}
                 </div>
             </div>
-            <div class="profile-info">
-                <div class="info-field">
-                    <div class="info-field-label">
-                        Full Name:
-                    </div>
-                    <div class="info-field-content">
-                        ${profilePage.f_name + " " + profilePage.l_name}
-                    </div>
+            <div class="info-field">
+                <div class="info-field-label">
+                    Email:
                 </div>
-                <div class="info-field">
-                    <div class="info-field-label">
-                        Email:
-                    </div>
-                    <div class="info-field-content">
-                        ${profilePage.email}
-                    </div>
+                <div class="info-field-content">
+                    ${profilePage.email}
                 </div>
-                <div class="info-field">
-                    <div class="info-field-label">
-                        Gender:
-                    </div>
-                    <div class="info-field-content">
-                        ${profilePage.gender}
-                    </div>
+            </div>
+            <div class="info-field">
+                <div class="info-field-label">
+                    Gender:
                 </div>
-                <div class="info-field">
-                    <div class="info-field-label">
-                        Looking for:
-                    </div>
-                    <div class="info-field-content">
-                        ${profilePage.interested_gender}
-                    </div>
+                <div class="info-field-content">
+                    ${profilePage.gender}
+                </div>
+            </div>
+            <div class="info-field">
+                <div class="info-field-label">
+                    <span>Looking for:</span>
+                </div>
+                <div class="info-field-content">
+                    ${profilePage.interested_gender}
                 </div>
             </div>
             <div class="">
-                <button id="edit-profile">Edit Profile</button>
+                <button class="main-button" id="edit-profile">Edit Profile</button>
+                <label for="edit-picture" class="edit-picture-button">Edit Picture<input type="file" class="hidden" id="edit-picture" /></label>
             </div>
         </div>
+
         `
     )
 }
