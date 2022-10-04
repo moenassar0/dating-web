@@ -21,6 +21,15 @@
     height: auto;
 }
 
+.loggedin-container{
+    background-color: #0089A8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: auto;
+}
+
 .login-form-container{
     display: flex;
     justify-content: center;
@@ -96,10 +105,8 @@
 /* Homepage */
 .home-container{
     display: flex;
-
     flex-direction: column;
     background-color: #935196;
-    border-radius: 15px;
     width: 100%;
     min-height: 100vh;
     height: auto;
@@ -109,7 +116,6 @@
     display:flex;
     justify-content: flex-start;
     width:100%;
-    border-radius: 15px;
     height:50px;
     background: #C74688;
 }
@@ -203,10 +209,15 @@
 .info-field-label{
     font-weight: bolder;
     width: 30%;
+    margin-right: 5px;
 }
 
 .info-field-content{
     width: 70%;
+}
+
+.edit-profile-btn{
+
 }
 
 /* Block Popup */
@@ -347,16 +358,6 @@
     margin-bottom: 10px;
 }
 
-.chat-message{
-    display: flex;
-    width: 100%;
-    padding: 5px 5px;
-    background-color: grey;
-    color: black;
-    height: 50px;
-    margin-bottom: 5px;
-}
-
 .send-message-container{
     display: flex;
     width: 100%;
@@ -369,6 +370,28 @@
 
 .send-message-container button{
     width: 20%;
+}
+
+.chat-message-receiver{
+    background-color: #C74688;
+    display: flex;
+    width: 100%;
+    padding: 5px 5px;
+    color: black;
+    height: 50px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.chat-message-sender{
+    background-color: #0082C6;
+    display: flex;
+    width: 100%;
+    padding: 5px 5px;
+    color: black;
+    height: 50px;
+    margin-bottom: 5px;
+    border-radius: 5px;
 }
 
 
@@ -415,7 +438,28 @@
 
 .main-button:hover{
     background-color: #FF5B8D;
-    color:white;
+    color:black;
+    font-weight: bolder;
+}
+
+.edit-picture-button{
+    border-radius: 15px;
+    color: grey;
+    background-color: white;
+    width: 100px;
+    height: 35px;
+    border-color: transparent;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-style: inherit;
+    padding: 7px 7px;
+}
+
+.edit-picture-button:hover{
+    background-color: #FF5B8D;
+    color:black;
+    font-weight: bolder;
 }
 
 .input{
@@ -463,6 +507,26 @@
     .block-label{
         width: 70%;
     }
+
+    .profile-image{
+        width: 45%;
+    }
+
+    .profile-info{
+        width: 45%;
+    }
+
+    .info-field{
+        width: 90%;
+    }
+
+    .info-field-label{
+        font-size: 0.8rem;
+    }
+
+    .info-field-content{
+        font-size: 0.8rem;
+    }
 }
 
 @media only screen and (max-width: 450px){
@@ -483,5 +547,17 @@
 
     .block-label{
         width: 80%;
+    }
+
+    .profile-image{
+        width: 60%;
+    }
+
+    .profile-info{
+        width: 60%;
+    }
+
+    .info-field{
+        width: 100%;
     }
 }

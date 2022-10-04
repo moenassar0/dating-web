@@ -59,14 +59,14 @@ async function ShowMessages(id, user_info){
         //If the sender is not the current user
         if(message.sender_id == id){
             const msgDiv = document.createElement("div");
-            msgDiv.classList.add("chat-message");
+            msgDiv.classList.add("chat-message-receiver");
             msgDiv.innerHTML = user_info + ":   " + message.message_content;
             messages_container.appendChild(msgDiv);
             console.log(msgDiv);
         }
         else{
             const msgDiv = document.createElement("div");
-            msgDiv.classList.add("chat-message");
+            msgDiv.classList.add("chat-message-sender");
             msgDiv.innerHTML = "You" + ":   " + message.message_content;
             messages_container.appendChild(msgDiv);
             console.log(msgDiv);
