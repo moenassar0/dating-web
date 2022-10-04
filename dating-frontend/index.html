@@ -15,13 +15,19 @@
                 <img src="./assets/images/icon.png" width="150px" height="150px">
             </div>
             <div class="form-block">
-                <label for="email">Email: </label><input type="email" name="email" id="login-email" placeholder="Email">
+                <div class="label-login">
+                    <label for="email">Email: </label>
+                </div>
+                <div class="input-login">
+                    <input type="email" name="email" id="login-email" placeholder="Email">
+                </div>
             </div>
             <div class="form-block">
-                <label for="email">Password: </label><input type="password" name="password" id="login-password" placeholder="Password">
+                <label for="email">Password: </label>
+                <input type="password" name="password" id="login-password" placeholder="Password">
             </div>
-            <div class="form-block">
-                <button id="login-btn">Login</button>
+            <div class="form-block center-self">
+                <button class="main-button" id="login-btn">Login</button>
             </div>
             <div class="form-block">
                 <a id="go-signup" href="#">Don't have an account? Sign up!</a>
@@ -127,6 +133,9 @@
                 </div>
             </div>
             <button id="signup-btn" class="main-button">Signup</button>
+            <div class="form-block">
+                <a id="go-login" href="#">Have an account? Login instead.</a>
+            </div>
         </div>
     </div>
     <script type="module" src="./js/login-validation.js"></script>
