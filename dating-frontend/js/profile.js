@@ -4,7 +4,6 @@ import {ProfilePage} from "./Components/ProfilePage.js";
 let token = localStorage.getItem("token");
 
 const profile_container = document.getElementById("profile-card-container");
-const toggle_incognito_btn = document.getElementById("toggle-incognito");
 
 //Edit Form Inputs
 const edit_form = document.getElementById("edit-popup");
@@ -77,7 +76,6 @@ async function validateToken(){
 
 async function getProfile(){
     const response = await Functions.postAPI(Functions.baseURL + "/user/profile", {}, token);
-    console.log(response);
     let profileHTML = '';
     profileHTML += ProfilePage(response.data.message);
     profile_container.innerHTML = profileHTML;
@@ -103,15 +101,21 @@ async function updatePicture(){
     })
 }
 
-toggle_incognito_btn.addEventListener("click", () => {
-    
-})
+async function toggleIncognito(){
+    const toggle_incognito_btn = document.getElementById("toggle-incognito");
+    toggle_incognito_btn.addEventListener("click", async () => {
+        const response = await Functions.postAPI(Functions.baseURL + "/user/incognito", {}, token);
+        window.location.href = "profile.html";
+    })
+}
 
 await validateToken();
 await getProfile();
 await updatePicture();
 editPopup();
+await toggleIncognito();
 Functions.navigationButtons();
+
 
 function validateName(name, minLength) {
     if(name.length < minLength)
