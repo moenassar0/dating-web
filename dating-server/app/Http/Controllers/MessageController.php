@@ -12,6 +12,7 @@ use App\Http\Controllers\DB;
 class MessageController extends Controller
 {
     public function sendMessage(Request $request){
+
         $message = new Message;
         $id = auth()->user()->id;
         $message->sender_id = $id;
@@ -25,12 +26,21 @@ class MessageController extends Controller
     public function getMessengers(){
 
         $id = auth()->user()->id;
-
         //Find the users that you sent a message to or received a message from
         $peopleYouMessaged = Message::select('messages.receiver_id')->where('sender_id', $id)
         ->union(Message::select('messages.sender_id')->where('receiver_id', $id))->get();
 
         $users = User::select('*')->whereIn('users.id', $peopleYouMessaged)->get();
         return response()->json(['message' => $users]);
+    }
+
+    public function getMessages(Request $request){
+        $id = auth()->user()->id;
+        $messenger_id = $request->messenger_id;
+
+        $messages = Message::select('*')->where('messages.sender_id', $id)->where('messages.receiver_id', $messenger_id)
+        ->union(Message::select('*')->where('messages.sender_id', $messenger_id)->where('messages.receiver_id', $id))->get();
+
+        return response()->json(['message' => $messages]);
     }
 }
