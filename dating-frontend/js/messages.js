@@ -25,5 +25,12 @@ async function getMessengers(){
     chat_users.innerHTML = messengersHTML;
 }
 
+function addChatFunctionality(){
+    const messengers = Array.prototype.slice.call(document.getElementsByClassName("chat-user"));
+    console.log(messengers);
+}
+
 await getMessengers();
+addChatFunctionality();
+
 Functions.navigationButtons();
