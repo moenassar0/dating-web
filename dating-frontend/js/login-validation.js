@@ -93,8 +93,6 @@ function validateSignUp(base64_string){
         else{
             error_div.classList.add("hidden");
             error_message = '';
-            success_div.innerHTML = "Successfully sent the message!"
-            success_div.classList.remove("hidden");
             navigator.geolocation.getCurrentPosition(function(position){
                 const lat = (position.coords.latitude);
                 const long = (position.coords.longitude);
@@ -125,7 +123,21 @@ async function logUserIn(data){
 
 async function signUserUp(data){
     const response = await Functions.postAPI(Functions.baseURL + "/user/add", data);
-    console.log(response);
+
+    //Check if user is registered or there's an error from response
+    if(response == undefined){
+        error_message += "Couldn't signup!";
+        success_div.classList.add("hidden");
+        error_div.classList.remove("hidden");
+        error_div.innerHTML = error_message;
+        error_message = '';
+    }
+    else{
+        error_message = '';
+        success_div.innerHTML = "Successfully registered!"
+        success_div.classList.remove("hidden");
+        setTimeout(function(){window.location.href="index.html"}, 100);
+    }
 }
 
 //Validation functions
