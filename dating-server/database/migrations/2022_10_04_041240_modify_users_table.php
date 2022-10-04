@@ -15,6 +15,7 @@ class ModifyUsersTable extends Migration
     {
         Schema::table('users', function($table) {
             $table->string('location');
+            $table->boolean('incognito')->default(0);
         });
     }
 
@@ -27,6 +28,7 @@ class ModifyUsersTable extends Migration
     {
         Schema::table('users', function($table) {
             $table->dropColumn('location');
+            $table->dropColumn('incognito');
         });
     }
 }
