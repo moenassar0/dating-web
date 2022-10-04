@@ -1,33 +1,3 @@
-/*export const js_functions = () => {
-    const js_functions = {};
-
-    js_functions.baseURL = "http://127.0.0.1:8000/api/auth";
-    
-    
-    js_functions.getAPI = async (api_url) => {
-        try{
-            return await axios(api_url);
-        }catch(error){
-            console.log("Error from GET api: ", error);
-        }
-    }
-    
-    js_functions.postAPI = async (api_url, api_data, api_token = null) => {
-        try{
-            return await axios.post(
-                api_url,
-                api_data,
-                { headers:{
-                        'Authorization' : "token " + api_token
-                    }
-                }
-            );
-        }catch(error){
-            console.log("Error from GET api: ", error);
-        }
-    }
-}*/
-
 export const baseURL = "http://127.0.0.1:8000/api";
 export const postAPI = async (api_url, api_data, api_token = null) => {
     try{
@@ -43,19 +13,6 @@ export const postAPI = async (api_url, api_data, api_token = null) => {
         console.log("Error from POST api: ", error);
     }
 }
-
-export const consoleLog = () => {
-    console.log("gg");
-}
-
-/*
-//Validate user's token, if valid refresh with a new token and a new expiration date
-export const validateToken = async (token) => {
-    const response = await postAPI(baseURL + "/auth/authUser", {}, token);
-    //console.log(response);
-    //localStorage.setItem("token", (response.data.access_token));
-    return token;
-}*/
 
 //Navigation buttons
 const home_btn = document.getElementById("home-btn");
@@ -85,15 +42,11 @@ export const navigationButtons = () => {
 //Find KM distance from latitude and longitude
 export const distance = (lat1, lat2, lon1, lon2) => {
 
-    // The math module contains a function
-    // named toRadians which converts from
-    // degrees to radians.
     lon1 =  lon1 * Math.PI / 180;
     lon2 = lon2 * Math.PI / 180;
     lat1 = lat1 * Math.PI / 180;
     lat2 = lat2 * Math.PI / 180;
 
-    // Haversine formula
     let dlon = lon2 - lon1;
     let dlat = lat2 - lat1;
     let a = Math.pow(Math.sin(dlat / 2), 2)
@@ -101,13 +54,25 @@ export const distance = (lat1, lat2, lon1, lon2) => {
     * Math.pow(Math.sin(dlon / 2),2);
 
     let c = 2 * Math.asin(Math.sqrt(a));
-
-    // Radius of earth in kilometers. Use 3956
-    // for miles
     let r = 6371;
 
-    // calculate the result
     return(c * r);
+}
+
+//Validate user and refresh token function
+export const validateUser = async () => {
+    let token = localStorage.getItem("token");
+    if(token == undefined)
+        window.location.href = "index.html";
+    //Validate user's token, if valid refresh with a new token and a new expiration date
+    async function validateToken(){
+        const response = await postAPI(baseURL + "/auth/authUser", {}, token);
+        if(response == undefined)
+            window.location.href = "index.html";
+        localStorage.setItem("token", (response.data.access_token));
+        token = localStorage.getItem("token");
+    }
+    await validateToken();
 }
 
 
