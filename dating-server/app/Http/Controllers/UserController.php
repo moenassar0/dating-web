@@ -21,7 +21,7 @@ class UserController extends Controller
         $user->interested_gender = $request->interested_gender;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-
+        $user->location = $request->location;
         //Generate image and it's URL
         $base64_string = $request->base64_string;
         $decoder = base64_decode($base64_string);
