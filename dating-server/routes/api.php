@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MessageController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +29,8 @@ Route::post("/user/edit", [UserController::class, "editUser"]);
 
 
 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -36,4 +40,6 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function($router) {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/profile', [AuthController::class, 'profile']);
     Route::post('/authUser', [AuthController::class, 'authUser']);
+    Route::post("/user/send", [MessageController::class, "sendMessage"]);
+    Route::post("/user/messengers", [MessageController::class, "getMessengers"]);
 });
