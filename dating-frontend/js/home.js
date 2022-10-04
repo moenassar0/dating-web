@@ -63,9 +63,7 @@ async function getUsersData(){
 
             //Chat button action
             action.children[2].addEventListener("click", () => {
-                block_button.addEventListener("click", () => {
-                    SendHiMessage(id, token);
-                })
+                SendHiMessage(id, token);
             })
         });
     }

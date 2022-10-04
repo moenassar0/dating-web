@@ -4,6 +4,9 @@ import {Messenger} from "./Components/Messenger.js";
 let token = localStorage.getItem("token");
 const chat_users = document.getElementById("chat-users");
 const messages_container = document.getElementById("chat-messages");
+const message_text = document.getElementById("message-text");
+const send_message_btn = document.getElementById("send-message-btn");
+
 let last_id = 0;
 let last_user = -1;
 
@@ -50,8 +53,7 @@ async function addChatFunctionality(){
 async function ShowMessages(id, user_info){
     messages_container.innerHTML = '';
     const response = await Functions.postAPI(Functions.baseURL + "/auth/user/messages", {messenger_id: id}, token);
-
-    let messagesHTML = '';
+    messages_container.innerHTML = '';
     response.data.message.map(message => {
         //messagesHTML += Message(message, user_info);
         //If the sender is not the current user
@@ -70,10 +72,14 @@ async function ShowMessages(id, user_info){
             console.log(msgDiv);
         }
     })
-
-    //messages_container.innerHTML = messagesHTML;
-    
 }
+
+//Send message:
+send_message_btn.addEventListener("click", async () => {
+    const cnt = (message_text.value);
+    const response = await Functions.postAPI(Functions.baseURL + "/auth/user/send", {receiver_id: last_id, message_content: cnt}, token);
+    ShowMessages(last_id, last_user);
+})
 
 Functions.navigationButtons();
 await getMessengers();
