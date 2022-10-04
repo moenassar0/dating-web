@@ -17,6 +17,12 @@ await validateToken();
 async function getMessengers(){
     const response = await Functions.postAPI(Functions.baseURL + "/auth/user/messengers", {}, token);
     console.log(response);
+
+    let messengersHTML = '';
+    response.data.message.map(messenger => {
+        messengersHTML += Messenger(messenger);
+    })
+    chat_users.innerHTML = messengersHTML;
 }
 
 await getMessengers();
