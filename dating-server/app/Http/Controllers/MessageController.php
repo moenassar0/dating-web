@@ -43,4 +43,17 @@ class MessageController extends Controller
 
         return response()->json(['message' => $messages]);
     }
+
+    public function sendHi(Request $request){
+        $id = auth()->user()->id;
+        $receiver_id  = $request->receiver_id ;
+
+        $message = new Message;
+        $message->sender_id = $id;
+        $message->receiver_id = $request->receiver_id;
+        $message->message_content = "Hi!";
+
+        $message->save();
+        return response()->json(['message' => $message]);
+    }
 }
