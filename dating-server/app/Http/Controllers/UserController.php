@@ -151,7 +151,22 @@ class UserController extends Controller
 
         $user->save();
         return response()->json(['message' => 'success']);
-
     }
-    
+
+    public function toggleIncognito(){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+
+        $user = User::find(auth()->user()->id);
+        $incognito = $user->incognito;
+
+        if($incognito){
+            $user->incognito = 1;
+        }
+        else{
+            $user->incognito = 0;
+        }
+        $user->save();
+        return response()->json(['message' => 'success']);
+    }    
 }
