@@ -95,18 +95,24 @@ function validateSignUp(base64_string){
             error_message = '';
             success_div.innerHTML = "Successfully sent the message!"
             success_div.classList.remove("hidden");
-            const data = {
-                f_name: f_name.value,
-                l_name: l_name.value, 
-                gender: gender.options[gender.selectedIndex].value,
-                interested_gender: interested_gender.options[interested_gender.selectedIndex].value,
-                bio: bio.value,
-                email: signup_email.value,
-                password: signup_password.value,
-                base64_string: base64_string
-            }
-            console.log(data);
-            signUserUp(data);
+            navigator.geolocation.getCurrentPosition(function(position){
+                const lat = (position.coords.latitude);
+                const long = (position.coords.longitude);
+                const location = lat + "/" + long; 
+                const data = {
+                    f_name: f_name.value,
+                    l_name: l_name.value, 
+                    gender: gender.options[gender.selectedIndex].value,
+                    interested_gender: interested_gender.options[interested_gender.selectedIndex].value,
+                    bio: bio.value,
+                    email: signup_email.value,
+                    password: signup_password.value,
+                    base64_string: base64_string,
+                    location: location
+                }
+                console.log(data);
+                signUserUp(data);
+            })
         }
 }
 
