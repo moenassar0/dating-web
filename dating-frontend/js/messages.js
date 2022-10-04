@@ -2,6 +2,19 @@ import * as Functions from "./Functions.js";
 import {Messenger} from "./Components/Messenger.js";
 
 let token = localStorage.getItem("token");
+if(token == undefined)
+    window.location.href = "index.html";
+//Validate user's token, if valid refresh with a new token and a new expiration date
+async function validateToken(){
+    const response = await Functions.postAPI(Functions.baseURL + "/auth/authUser", {}, token);
+    if(response == undefined)
+        window.location.href = "index.html";
+    localStorage.setItem("token", (response.data.access_token));
+    token = localStorage.getItem("token");
+}
+
+await validateToken();
+
 const chat_users = document.getElementById("chat-users");
 const messages_container = document.getElementById("chat-messages");
 const message_text = document.getElementById("message-text");
@@ -9,15 +22,6 @@ const send_message_btn = document.getElementById("send-message-btn");
 
 let last_id = 0;
 let last_user = -1;
-
-//Validate user's token, if valid refresh with a new token and a new expiration date
-async function validateToken(){
-    const response = await Functions.postAPI(Functions.baseURL + "/auth/authUser", {}, token);
-    localStorage.setItem("token", (response.data.access_token));
-    token = localStorage.getItem("token");
-}
-
-await validateToken();
 
 //Get messengers
 async function getMessengers(){
