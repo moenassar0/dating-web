@@ -62,6 +62,13 @@ async function ShowMessages(id, user_info){
             messages_container.appendChild(msgDiv);
             console.log(msgDiv);
         }
+        else{
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("chat-message");
+            msgDiv.innerHTML = "You" + ":   " + message.message_content;
+            messages_container.appendChild(msgDiv);
+            console.log(msgDiv);
+        }
     })
 
     //messages_container.innerHTML = messagesHTML;
