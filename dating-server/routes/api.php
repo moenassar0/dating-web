@@ -26,6 +26,8 @@ Route::post("/users/find", [UserController::class, "getUsers"]);
 Route::post("/users/image", [UserController::class, "insertImage"]);
 Route::post("/user/profile", [UserController::class, "getProfile"]);
 Route::post("/user/edit", [UserController::class, "editUser"]);
+Route::post("/user/updateImage", [UserController::class, "changeImage"]);
+
 
 
 
