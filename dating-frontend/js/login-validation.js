@@ -40,7 +40,7 @@ login_btn.addEventListener("click", async () => {
     logUserIn(response.data);
 
 })
-///////
+
 const picture = document.getElementById("image");
 picture.addEventListener("change", async e => {
     const file = picture.files[0];
@@ -116,11 +116,6 @@ function validateSignUp(base64_string){
         }
 }
 
-
-
-
-
-
 async function logUserIn(data){
     if(data.access_token){
         localStorage.setItem("token", data.access_token);
@@ -132,7 +127,6 @@ async function signUserUp(data){
     const response = await Functions.postAPI(Functions.baseURL + "/user/add", data);
     console.log(response);
 }
-
 
 //Validation functions
 function validateEmail(email) {
