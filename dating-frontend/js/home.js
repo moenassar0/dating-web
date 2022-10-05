@@ -32,24 +32,25 @@ close_block_popup.addEventListener("click", () => {
 async function getUsersData(){
     
     const response = await Functions.postAPI(Functions.baseURL + "/users/find", {}, token);
-    
-    let profileCardHTML = '';
-    response.data.message.map(user => {
-
-        //Calculate distance from user
-        console.log(lat1, long1);
-        let location2 = user.location.split("/");
-        console.log(location2);
-        let lat2 = location2[0];
-        let long2 = location2[1];
-        let d = Functions.distance(lat1, lat2, long1, long2);
-        console.log(d);
-        profileCardHTML += ProfileCard(user, d);
-    })
-    profile_card_container.innerHTML = profileCardHTML;
-    
-    usersActions();
-
+    if(response.data.message == 'not found'){
+        profile_card_container.innerHTML = "Nobody's here...";
+    }
+    else{
+        let profileCardHTML = '';
+        response.data.message.map(user => {
+            //Calculate distance from user
+            console.log(lat1, long1);
+            let location2 = user.location.split("/");
+            console.log(location2);
+            let lat2 = location2[0];
+            let long2 = location2[1];
+            let d = Functions.distance(lat1, lat2, long1, long2);
+            console.log(d);
+            profileCardHTML += ProfileCard(user, d);
+        })
+        profile_card_container.innerHTML = profileCardHTML;
+        usersActions();
+    }
 }
 
 getUsersData();
