@@ -103,7 +103,6 @@ async function toggleIncognito(){
     })
 }
 
-await validateToken();
 await getProfile();
 await updatePicture();
 editPopup();
