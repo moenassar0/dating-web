@@ -39,13 +39,10 @@ async function getUsersData(){
         let profileCardHTML = '';
         response.data.message.map(user => {
             //Calculate distance from user
-            console.log(lat1, long1);
             let location2 = user.location.split("/");
-            console.log(location2);
             let lat2 = location2[0];
             let long2 = location2[1];
             let d = Functions.distance(lat1, lat2, long1, long2);
-            console.log(d);
             profileCardHTML += ProfileCard(user, d);
         })
         profile_card_container.innerHTML = profileCardHTML;
@@ -60,7 +57,6 @@ Functions.navigationButtons();
 export const usersActions = (favoritesPage, favoritesPageToken) => {
     if(document.getElementsByClassName("profile-card-actions")){
         const actions = Array.prototype.slice.call(document.getElementsByClassName("profile-card-actions"));
-        console.log(actions);
         actions.forEach(action => {
             const id = action.id;
             if(favoritesPage){
