@@ -216,10 +216,6 @@
     width: 70%;
 }
 
-.edit-profile-btn{
-
-}
-
 /* Block Popup */
 .block-popup{
     display: flex;
@@ -375,23 +371,27 @@
 .chat-message-receiver{
     background-color: #C74688;
     display: flex;
-    width: 100%;
+    min-width: 20%;
+    max-width: 60%;
     padding: 5px 5px;
     color: black;
     height: 50px;
     margin-bottom: 5px;
     border-radius: 5px;
+    align-self: flex-start;
 }
 
 .chat-message-sender{
     background-color: #0082C6;
     display: flex;
-    width: 100%;
+    min-width: 20%;
+    max-width: 60%;
     padding: 5px 5px;
     color: black;
     height: 50px;
     margin-bottom: 5px;
     border-radius: 5px;
+    align-self: flex-end;
 }
 
 
