@@ -394,6 +394,21 @@
     align-self: flex-end;
 }
 
+.chat-msg-btn{
+    margin-left: 5px;
+    height: 70%;
+    align-self: center;
+    background-color: #C74688;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.chat-msg-btn:hover{
+    background-color: #C74648;
+    font-weight: bolder;
+}
+
 
 /* Utilities */
 .center-self{
@@ -490,7 +505,6 @@
     cursor:pointer;
 }
 
-
 /* Responsitivity */
 @media only screen and (max-width: 700px){
     .block-popup{
@@ -527,6 +541,14 @@
     .info-field-content{
         font-size: 0.8rem;
     }
+
+    .navbar-item{
+        font-size: 0.9rem;
+    }
+    
+    .messenger-name{
+        display:none;
+    }
 }
 
 @media only screen and (max-width: 450px){
@@ -559,5 +581,9 @@
 
     .info-field{
         width: 100%;
+    }
+
+    .navbar-item{
+        font-size: 0.75rem;
     }
 }
