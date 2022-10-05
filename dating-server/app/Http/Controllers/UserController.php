@@ -105,6 +105,18 @@ class UserController extends Controller
 
     }
 
+    public function unFavorite(Request $request){
+        if(!auth()->user())
+            return response()->json(['message' => "Not authorized!"]);
+
+        $favorite = Favorite::where('user_id', auth()->user()->id)
+        ->where('favorited_user_id', $request->favorited_user_id)
+        ->delete();
+
+        return response()->json(['message' => 'Favorite removed!']);
+
+    }
+
     public function blockUser(Request $request){
         if(!auth()->user())
             return response()->json(['message' => "Not authorized!"]);
