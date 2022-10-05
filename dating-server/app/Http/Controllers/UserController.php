@@ -113,7 +113,7 @@ class UserController extends Controller
         ->where('favorited_user_id', $request->favorited_user_id)
         ->delete();
 
-        return response()->json(['message' => 'Favorite removed!']);
+        return response()->json(['message' => $favorite]);
 
     }
 
