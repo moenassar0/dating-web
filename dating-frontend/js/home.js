@@ -1,6 +1,7 @@
 import * as Functions from "./Functions.js";
 import {ProfileCard} from "./Components/ProfileCard.js";
 import {FavoriteUser} from "./FavoriteUser.js";
+import { UnFavoriteUser } from "./UnFavoriteUser.js";
 import { BlockUser } from "./BlockUser.js";
 import { SendHiMessage } from "./SendHiMessage.js";
 
@@ -55,7 +56,7 @@ getUsersData();
 
 Functions.navigationButtons();
 
-export const usersActions = (favoritesPage) => {
+export const usersActions = (favoritesPage, favoritesPageToken) => {
     if(document.getElementsByClassName("profile-card-actions")){
         const actions = Array.prototype.slice.call(document.getElementsByClassName("profile-card-actions"));
         console.log(actions);
@@ -67,7 +68,7 @@ export const usersActions = (favoritesPage) => {
             //Favorite button action
             action.children[0].addEventListener("click", () => {
                 if(favoritesPage){
-                    //UnFavoriteUser(id, token);
+                    UnFavoriteUser(id, favoritesPageToken);
                     action.children[0].src = "../dating-frontend/assets/images/like.png";
                 }
                 else{
