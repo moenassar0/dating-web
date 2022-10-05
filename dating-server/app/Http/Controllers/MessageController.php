@@ -40,7 +40,7 @@ class MessageController extends Controller
 
         $messages = Message::select('*')->where('messages.sender_id', $id)->where('messages.receiver_id', $messenger_id)
         ->union(Message::select('*')->where('messages.sender_id', $messenger_id)->where('messages.receiver_id', $id))
-        ->orderBy('created_at', 'desc')
+        ->orderBy('created_at', 'ASC')
         ->get();
 
         return response()->json(['message' => $messages]);
