@@ -44,21 +44,36 @@ async function getUsersData(){
         let d = Functions.distance(lat1, lat2, long1, long2);
         console.log(d);
         profileCardHTML += ProfileCard(user, d);
-        /////////////////////////////
-        
     })
     profile_card_container.innerHTML = profileCardHTML;
     
+    usersActions();
+
+}
+
+getUsersData();
+
+Functions.navigationButtons();
+
+export const usersActions = (favoritesPage) => {
     if(document.getElementsByClassName("profile-card-actions")){
         const actions = Array.prototype.slice.call(document.getElementsByClassName("profile-card-actions"));
         console.log(actions);
         actions.forEach(action => {
             const id = action.id;
-
+            if(favoritesPage){
+                action.children[0].src = "../dating-frontend/assets/images/liked.png";
+            }
             //Favorite button action
             action.children[0].addEventListener("click", () => {
-                FavoriteUser(id, token);
-                action.children[0].src = "../dating-frontend/assets/images/liked.png";
+                if(favoritesPage){
+                    //UnFavoriteUser(id, token);
+                    action.children[0].src = "../dating-frontend/assets/images/like.png";
+                }
+                else{
+                    FavoriteUser(id, token);
+                    action.children[0].src = "../dating-frontend/assets/images/liked.png";
+                }
             })
 
             //Block button action
@@ -79,10 +94,4 @@ async function getUsersData(){
         });
     }
 }
-
-getUsersData();
-
-Functions.navigationButtons();
-
-
 
