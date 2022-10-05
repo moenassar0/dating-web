@@ -1,5 +1,9 @@
 import * as Functions from "./Functions.js"; 
 import {ProfileCard} from "./Components/ProfileCard.js";
+import { BlockUser } from "./BlockUser.js";
+import { FavoriteUser } from "./FavoriteUser.js";
+import { SendHiMessage } from "./SendHiMessage.js";
+import { usersActions } from "./home.js";
 
 const profile_card_container = document.getElementById("profile-card-container");
 let token = localStorage.getItem("token");
@@ -26,6 +30,8 @@ async function getUsersData(){
     profile_card_container.innerHTML = profileCardHTML;
 }
 
-getUsersData();
+await getUsersData();
+usersActions(true);
 
 Functions.navigationButtons();
+
