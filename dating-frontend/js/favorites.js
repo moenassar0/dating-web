@@ -31,7 +31,7 @@ async function getUsersData(){
 }
 
 await getUsersData();
-usersActions(true);
+usersActions(true, token);
 
 Functions.navigationButtons();
 
