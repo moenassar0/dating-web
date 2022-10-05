@@ -22,12 +22,16 @@ await validateToken();
 async function getUsersData(){
     
     const response = await Functions.postAPI(Functions.baseURL + "/user/favorites", {}, token);
-    
-    let profileCardHTML = '';
-    response.data.message.map(user => {
-        profileCardHTML += ProfileCard(user);
-    })
-    profile_card_container.innerHTML = profileCardHTML;
+    if(response.data.message.length == 0){
+        profile_card_container.innerHTML = "Nobody's here...";
+    }
+    else{
+        let profileCardHTML = '';
+        response.data.message.map(user => {
+            profileCardHTML += ProfileCard(user);
+        })
+        profile_card_container.innerHTML = profileCardHTML;
+    }
 }
 
 await getUsersData();
