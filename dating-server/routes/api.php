@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function($router)
     Route::post("/user/messengers", [MessageController::class, "getMessengers"]);
     Route::post("/user/messages", [MessageController::class, "getMessages"]);
     Route::post("/user/sendhi", [MessageController::class, "sendHi"]);
-    
+    Route::post("/user/unfavorite", [UserController::class, "unFavorite"]);
 });
 
 Route::post('auth/register', [AuthController::class, 'register']);
